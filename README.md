@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DDMRP Course Management Platform
+
+A modern web application for managing and displaying educational courses.
+
+## Features
+
+- 🏠 **Public Website**: Showcase courses to visitors
+- 📝 **Inquiry System**: Allow users to express interest in courses
+- 🔐 **Admin Dashboard**: Manage courses with an intuitive interface
+- 📊 **Statistics**: Track and analyze course inquiries
+- 📝 **Content Editor**: Create rich course descriptions
+- 🖼️ **Image Upload**: Add images to courses
+- 📅 **Events Management**: Create and manage events with registration tracking
+- 🎟️ **Event Registration**: Allow users to register for events
+- 📱 **Responsive Design**: Works on all devices
+- 🗄️ **MongoDB Integration**: Persistent data storage
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ and npm
+- MongoDB database
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd ddmrp
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables
+Create a `.env.local` file in the root directory with the following:
+```
+MONGODB_URI=your_mongodb_connection_string
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_nextauth_secret
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server
+```bash
+npm run dev
+```
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-To learn more about Next.js, take a look at the following resources:
+### Build for Production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+The project follows the Next.js App Router structure:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `/app`: Main application code
+  - `/admin`: Admin area components and pages
+  - `/api`: API routes
+  - `/components`: Reusable components
+  - `/courses`: Public course pages
+  - `/events`: Public events pages
+  - `/lib`: Utility functions and models
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For more detailed information, see the [DOCUMENTATION.md](./DOCUMENTATION.md) file.
+
+## Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/)
+- **UI**: [React](https://reactjs.org/) + [TailwindCSS](https://tailwindcss.com/)
+- **Database**: [MongoDB](https://www.mongodb.com/)
+- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Built with Next.js App Router
+- Styled with TailwindCSS
+- MongoDB for database storage
