@@ -11,6 +11,7 @@ export interface Event {
   isArchived: boolean;
   createdAt: Date;
   updatedAt: Date;
+  registrationCount?: number; // Number of registrations for this event
 }
 
 export async function getAllEvents(includeArchived: boolean = false): Promise<Event[]> {

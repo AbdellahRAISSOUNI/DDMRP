@@ -59,8 +59,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/intuitive-flow" className="text-slate-400 hover:text-white transition-colors">
-                  IntuitiveFlow
+                <Link href="/intuiflow" className="text-slate-400 hover:text-white transition-colors">
+                  IntuiFlow
                 </Link>
               </li>
               <li>

@@ -262,7 +262,7 @@ export default function BookDemoPage() {
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-slate-800 bg-white"
-                        placeholder="your@email.com"
+                        placeholder="john@example.com"
                         required
                       />
                     </motion.div>
@@ -279,7 +279,7 @@ export default function BookDemoPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-slate-800 bg-white"
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+1 (123) 456-7890"
                         required
                       />
                     </motion.div>
@@ -296,14 +296,14 @@ export default function BookDemoPage() {
                         value={formData.company}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-slate-800 bg-white"
-                        placeholder="Your Company Ltd."
+                        placeholder="Your Company"
                       />
                     </motion.div>
                     
                     {/* Preferred Date */}
                     <motion.div variants={fadeIn} className="md:col-span-2">
                       <label htmlFor="preferredDate" className="block text-sm font-medium text-slate-700 mb-1">
-                        Preferred Demo Date
+                        Preferred Date for Demo
                       </label>
                       <input
                         type="date"
@@ -324,83 +324,40 @@ export default function BookDemoPage() {
                       <textarea
                         id="message"
                         name="message"
-                        rows={4}
                         value={formData.message}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-slate-800 bg-white"
+                        rows={4}
+                        className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-slate-800 bg-white resize-none"
                         placeholder="Tell us about your specific needs or questions..."
-                      />
-                    </motion.div>
-                    
-                    <motion.div variants={fadeIn} className="md:col-span-2 flex justify-end">
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className={`px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 ${
-                          isSubmitting ? 'opacity-75 cursor-not-allowed' : 'hover:shadow-lg'
-                        }`}
-                      >
-                        {isSubmitting ? (
-                          <span className="flex items-center">
-                            <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Processing...
-                          </span>
-                        ) : (
-                          'Book Your Demo'
-                        )}
-                      </button>
+                      ></textarea>
                     </motion.div>
                   </div>
+                  
+                  <motion.div 
+                    variants={fadeIn}
+                    className="mt-8 flex justify-center"
+                  >
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={`px-8 py-3 rounded-lg bg-blue-600 text-white font-bold text-lg shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all duration-300 ${
+                        isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:scale-105'
+                      }`}
+                    >
+                      {isSubmitting ? (
+                        <span className="flex items-center">
+                          <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          Processing...
+                        </span>
+                      ) : 'Request Demo'}
+                    </button>
+                  </motion.div>
                 </form>
               </div>
             </div>
-            
-            {/* Features Section */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
-            >
-              <div className="bg-white rounded-xl shadow-md p-6 border border-slate-100">
-                <div className="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-slate-800 mb-2">Quick Setup</h3>
-                <p className="text-slate-600">
-                  Our demo is designed to get you up and running quickly, with minimal setup time required.
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-xl shadow-md p-6 border border-slate-100">
-                <div className="h-12 w-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-slate-800 mb-2">Customized Demo</h3>
-                <p className="text-slate-600">
-                  We tailor each demo to your specific business needs and supply chain challenges.
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-xl shadow-md p-6 border border-slate-100">
-                <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-slate-800 mb-2">Secure Process</h3>
-                <p className="text-slate-600">
-                  Your information is kept confidential and secure throughout the demo process.
-                </p>
-              </div>
-            </motion.div>
           </div>
         </motion.section>
       </div>

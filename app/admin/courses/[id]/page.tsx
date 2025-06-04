@@ -161,7 +161,7 @@ function CourseEditor({ id }: { id: string }) {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-slate-800"
                 placeholder="Enter course title"
                 required
               />
@@ -177,7 +177,7 @@ function CourseEditor({ id }: { id: string }) {
                   type="text"
                   value={program}
                   onChange={(e) => setProgram(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-slate-800"
                   placeholder="e.g. DDP, DDL, Green belt"
                 />
               </div>
@@ -191,7 +191,7 @@ function CourseEditor({ id }: { id: string }) {
                   type="text"
                   value={instructor}
                   onChange={(e) => setInstructor(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-slate-800"
                   placeholder="e.g. SARIR Hicham"
                 />
               </div>
@@ -205,7 +205,7 @@ function CourseEditor({ id }: { id: string }) {
                 id="dates"
                 value={dates}
                 onChange={(e) => setDates(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-slate-800"
                 placeholder="Enter dates, one per line (e.g. 14 et 15 Juin 2024)"
                 rows={4}
               />

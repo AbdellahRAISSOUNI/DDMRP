@@ -65,8 +65,13 @@ export default function Header() {
                 </div>
                 <div className="ml-3">
                   <div className="flex flex-col">
-                    <span className="font-bold text-black text-sm leading-tight transition-all">DEMAND DRIVEN</span>
-                    <span className="font-bold text-black text-sm leading-tight transition-all">MRP</span>
+                    <span className="font-bold text-black text-lg leading-tight transition-all">
+                      <span className="text-green-600">D</span>
+                      <span className="text-green-600">D</span>
+                      <span className="text-orange-500">M</span>
+                      <span className="text-red-600">R</span>
+                      <span className="text-red-600">P</span>
+                    </span>
                   </div>
                 </div>
                 
@@ -130,12 +135,12 @@ export default function Header() {
               </li>
               <li>
                 <Link 
-                  href="/intuitive-flow" 
+                  href="/intuiflow" 
                   className={`font-medium transition-colors ${
-                    activePath.startsWith('/intuitive-flow') ? 'text-blue-600' : 'text-slate-800 hover:text-blue-600'
+                    activePath.startsWith('/intuiflow') ? 'text-blue-600' : 'text-slate-800 hover:text-blue-600'
                   }`}
                 >
-                  IntuitiveFlow
+                  IntuiFlow
                 </Link>
               </li>
               <li>
@@ -222,15 +227,15 @@ export default function Header() {
               Events
             </Link>
             <Link 
-              href="/intuitive-flow" 
+              href="/intuiflow" 
               className={`block px-3 py-2 rounded-md text-base font-medium ${
-                activePath.startsWith('/intuitive-flow')
+                activePath.startsWith('/intuiflow')
                   ? 'bg-blue-50 text-blue-600' 
                   : 'text-slate-800 hover:bg-blue-50 hover:text-blue-600'
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              IntuitiveFlow
+              IntuiFlow
             </Link>
             <Link 
               href="/contact" 

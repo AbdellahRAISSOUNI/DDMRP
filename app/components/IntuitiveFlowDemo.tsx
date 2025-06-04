@@ -212,10 +212,10 @@ export default function IntuitiveFlowDemo() {
               }}
             >
               <Link 
-                href="/intuitive-flow" 
-                className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+                href="/intuiflow" 
+                className="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
               >
-                Learn More
+                Learn More About IntuiFlow
               </Link>
               <Link 
                 href="/contact" 

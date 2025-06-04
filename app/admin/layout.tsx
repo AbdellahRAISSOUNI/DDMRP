@@ -112,19 +112,16 @@ export default function AdminLayout({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 bg-slate-900 bg-opacity-50 z-20 backdrop-blur-sm"
+          className="fixed inset-0 bg-slate-900/80 z-40 backdrop-blur-sm"
           onClick={() => setMobileMenuOpen(false)}
         ></motion.div>
       )}
       
-      {/* Sidebar */}
+      {/* Sidebar - Only visible on desktop */}
       <motion.aside 
-        className={`fixed lg:sticky top-0 left-0 z-30 h-screen bg-white/90 backdrop-blur-md shadow-lg flex flex-col ${
+        className={`fixed lg:sticky top-0 left-0 z-30 h-screen bg-white shadow-lg flex flex-col ${
           sidebarCollapsed ? 'w-16' : 'w-64'
-        } ${isMobile ? 'translate-x-0' : ''}`}
-        initial={isMobile ? { x: -320 } : {}}
-        animate={isMobile ? { x: mobileMenuOpen ? 0 : -320 } : {}}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        } hidden lg:flex`}
       >
         <div className={`p-4 border-b border-slate-100 flex ${sidebarCollapsed ? 'justify-center' : 'justify-between'} items-center`}>
           <Link href="/admin" className="flex items-center">
@@ -150,7 +147,7 @@ export default function AdminLayout({
           </Link>
           
           {/* Desktop Collapse Button */}
-          {!isMobile && !sidebarCollapsed && (
+          {!sidebarCollapsed && (
             <button 
               onClick={toggleSidebar} 
               className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors"
@@ -161,20 +158,8 @@ export default function AdminLayout({
             </button>
           )}
           
-          {/* Mobile Close Button */}
-          {isMobile && mobileMenuOpen && (
-            <button 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          )}
-          
           {/* Desktop Expand Button when collapsed */}
-          {!isMobile && sidebarCollapsed && (
+          {sidebarCollapsed && (
             <button 
               onClick={toggleSidebar} 
               className="absolute -right-3 top-12 h-6 w-6 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 transition-colors shadow-sm"
@@ -367,70 +352,266 @@ export default function AdminLayout({
         </div>
       </motion.aside>
       
+      {/* Mobile Menu - Slide up panel */}
+      {isMobile && (
+        <motion.div 
+          className="fixed inset-x-0 bottom-0 z-50 lg:hidden"
+          initial={{ y: "100%" }}
+          animate={{ y: mobileMenuOpen ? 0 : "100%" }}
+          transition={{ type: "spring", damping: 30, stiffness: 300 }}
+        >
+          <div className="bg-white rounded-t-2xl shadow-xl max-h-[80vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-100 p-4">
+              <div className="flex items-center">
+                <div className="relative h-10 w-10 overflow-hidden">
+                  <Image 
+                    src="/cropped-Design-sans-titre-23.png" 
+                    alt="DDMRP Logo" 
+                    width={40} 
+                    height={40}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="ml-3">
+                  <h1 className="text-lg font-bold bg-gradient-to-r from-green-600 via-orange-500 to-red-500 bg-clip-text text-transparent">DDMRP</h1>
+                  <div className="flex items-center gap-1.5">
+                    <div className="h-0.5 w-5 bg-green-500 rounded-full"></div>
+                    <div className="h-0.5 w-3 bg-orange-400 rounded-full"></div>
+                    <div className="h-0.5 w-5 bg-red-500 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+              <button 
+                onClick={() => setMobileMenuOpen(false)}
+                className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="p-4">
+              {session?.user && (
+                <div className="flex items-center bg-slate-50 p-3 rounded-lg mb-4">
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-white font-medium shadow-sm">
+                    {session.user.name ? session.user.name[0].toUpperCase() : 'A'}
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-slate-900">{session.user.name || session.user.email}</p>
+                    <p className="text-xs text-slate-500">Administrator</p>
+                  </div>
+                </div>
+              )}
+              
+              <div className="mb-4">
+                <h3 className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Main</h3>
+                <div className="grid grid-cols-2 gap-2">
+                  <Link 
+                    href="/admin" 
+                    className={`flex flex-col items-center p-4 rounded-lg ${
+                      isActive('/admin') && pathname === '/admin'
+                        ? 'bg-green-50 text-green-600'
+                        : 'bg-white text-slate-600 hover:bg-slate-50'
+                    } transition-all border border-slate-100 shadow-sm`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span className="text-sm">Dashboard</span>
+                  </Link>
+                  
+                  <Link 
+                    href="/admin/courses" 
+                    className={`flex flex-col items-center p-4 rounded-lg ${
+                      isActive('/admin/courses')
+                        ? 'bg-green-50 text-green-600'
+                        : 'bg-white text-slate-600 hover:bg-slate-50'
+                    } transition-all border border-slate-100 shadow-sm`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                    <span className="text-sm">Courses</span>
+                  </Link>
+                </div>
+              </div>
+              
+              <div className="mb-4">
+                <h3 className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Communications</h3>
+                <div className="grid grid-cols-3 gap-2">
+                  <Link 
+                    href="/admin/inquiries" 
+                    className={`flex flex-col items-center p-3 rounded-lg ${
+                      isActive('/admin/inquiries')
+                        ? 'bg-orange-50 text-orange-500'
+                        : 'bg-white text-slate-600 hover:bg-slate-50'
+                    } transition-all border border-slate-100 shadow-sm`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                    </svg>
+                    <span className="text-xs">Inquiries</span>
+                  </Link>
+                  
+                  <Link 
+                    href="/admin/demo-bookings" 
+                    className={`flex flex-col items-center p-3 rounded-lg ${
+                      isActive('/admin/demo-bookings')
+                        ? 'bg-purple-50 text-purple-500'
+                        : 'bg-white text-slate-600 hover:bg-slate-50'
+                    } transition-all border border-slate-100 shadow-sm`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-xs">Demos</span>
+                  </Link>
+                  
+                  <Link 
+                    href="/admin/events" 
+                    className={`flex flex-col items-center p-3 rounded-lg ${
+                      isActive('/admin/events')
+                        ? 'bg-red-50 text-red-500'
+                        : 'bg-white text-slate-600 hover:bg-slate-50'
+                    } transition-all border border-slate-100 shadow-sm`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-xs">Events</span>
+                  </Link>
+                </div>
+              </div>
+              
+              <button
+                onClick={handleSignOut}
+                className="w-full flex items-center justify-center p-3 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                <span className="text-sm font-medium">Logout</span>
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+      
+      {/* Mobile Bottom Navigation */}
+      {isMobile && (
+        <div className="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-slate-100 flex items-center justify-around py-2 px-4 lg:hidden">
+          <Link 
+            href="/admin" 
+            className={`flex flex-col items-center py-1 px-3 rounded-lg ${
+              isActive('/admin') && pathname === '/admin' ? 'text-green-600' : 'text-slate-500'
+            }`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            <span className="text-xs mt-1">Home</span>
+          </Link>
+          
+          <Link 
+            href="/admin/courses" 
+            className={`flex flex-col items-center py-1 px-3 rounded-lg ${
+              isActive('/admin/courses') ? 'text-green-600' : 'text-slate-500'
+            }`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span className="text-xs mt-1">Courses</span>
+          </Link>
+          
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="flex flex-col items-center justify-center py-1 px-3 -mt-5 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white h-14 w-14 shadow-lg"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <span className="text-xs mt-0.5">Menu</span>
+          </button>
+          
+          <Link 
+            href="/admin/inquiries" 
+            className={`flex flex-col items-center py-1 px-3 rounded-lg ${
+              isActive('/admin/inquiries') ? 'text-orange-500' : 'text-slate-500'
+            }`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            <span className="text-xs mt-1">Inquiries</span>
+          </Link>
+          
+          <Link 
+            href="/admin/events" 
+            className={`flex flex-col items-center py-1 px-3 rounded-lg ${
+              isActive('/admin/events') ? 'text-red-500' : 'text-slate-500'
+            }`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span className="text-xs mt-1">Events</span>
+          </Link>
+        </div>
+      )}
+      
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen">
-        <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-10 border-b border-slate-100">
-          <div className="px-4 md:px-6 py-4 flex items-center justify-between">
+        {/* Header - simplified for mobile */}
+        <header className="bg-white shadow-sm sticky top-0 z-10 border-b border-slate-100">
+          <div className="px-4 md:px-6 py-3 flex items-center justify-between">
             <div className="flex items-center">
-              {/* Mobile menu button */}
-              <motion.button
-                onClick={toggleMobileMenu}
-                className="lg:hidden mr-3 h-10 w-10 rounded-lg bg-gradient-to-r from-green-50 to-green-100 flex items-center justify-center text-green-600 hover:from-green-100 hover:to-green-200 transition-all duration-200 shadow-sm border border-green-100"
-                aria-label="Toggle menu"
-                whileTap={{ scale: 0.95 }}
-              >
-                <motion.div
-                  animate={mobileMenuOpen ? { rotate: 180 } : { rotate: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {mobileMenuOpen ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                  )}
-                </motion.div>
-              </motion.button>
+              {/* Logo for larger screens */}
+              <div className="hidden lg:flex items-center mr-4">
+                <div className="relative h-8 w-8 overflow-hidden">
+                  <Image 
+                    src="/cropped-Design-sans-titre-23.png" 
+                    alt="DDMRP Logo" 
+                    width={32} 
+                    height={32}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
               
-              <h2 className="text-lg font-medium text-slate-800">{getPageTitle()}</h2>
-              
-              <div className="hidden md:flex items-center">
-                <span className="h-5 w-px bg-slate-200 mx-4"></span>
-                <Link href="/" target="_blank" className="text-sm text-slate-500 hover:text-green-600 flex items-center transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                  View Website
-                </Link>
+              {/* Page title */}
+              <div className="flex flex-col">
+                <h2 className="text-lg font-medium text-slate-800">{getPageTitle()}</h2>
+                <div className="hidden sm:flex h-1 w-12 bg-gradient-to-r from-green-500 via-orange-400 to-red-500 rounded-full mt-1"></div>
               </div>
             </div>
             
-            <div className="flex items-center">
-              {/* Mobile view website link */}
-              <Link href="/" target="_blank" className="md:hidden mr-3 h-9 w-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="flex items-center gap-2">
+              {/* View website link - desktop only */}
+              <Link href="/" target="_blank" className="hidden md:flex items-center text-sm text-slate-500 hover:text-green-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
+                View Website
               </Link>
               
+              {/* User profile - desktop only */}
               {session?.user && (
-                <>
-                  <span className="hidden md:inline text-sm text-slate-600 mr-3">
+                <div className="hidden md:flex items-center bg-slate-100 rounded-full pl-3 pr-1 py-1">
+                  <span className="text-sm text-slate-600 mr-2">
                     {session.user.name || session.user.email}
                   </span>
-                  <div className="h-9 w-9 rounded-full bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-white font-medium shadow-sm">
+                  <div className="h-7 w-7 rounded-full bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-white font-medium shadow-sm">
                     {session.user.name ? session.user.name[0].toUpperCase() : 'A'}
                   </div>
-                </>
+                </div>
               )}
             </div>
           </div>
         </header>
         
-        <main className="flex-1 p-4 md:p-6 bg-slate-50">
+        <main className="flex-1 p-4 md:p-6 bg-slate-50 pb-16 lg:pb-6">
           {children}
         </main>
       </div>

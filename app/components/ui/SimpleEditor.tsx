@@ -78,7 +78,7 @@ export default function SimpleEditor({
               key={button.label}
               type="button"
               onClick={button.action}
-              className="px-2 py-1 bg-white border border-slate-300 rounded hover:bg-slate-50"
+              className="px-2 py-1 bg-white border border-slate-300 rounded hover:bg-slate-50 text-slate-800"
             >
               {button.label}
             </button>
@@ -90,7 +90,7 @@ export default function SimpleEditor({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`w-full p-4 min-h-[200px] border border-slate-300 border-t-0 rounded-b-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+        className={`w-full p-4 min-h-[200px] border border-slate-300 border-t-0 rounded-b-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 ${
           isFocused ? 'ring-2 ring-blue-500' : ''
         } ${className}`}
         onFocus={() => setIsFocused(true)}
@@ -100,7 +100,7 @@ export default function SimpleEditor({
         <div className="mt-4">
           <h4 className="text-sm font-medium text-slate-700 mb-2">Preview:</h4>
           <div 
-            className="p-4 border border-slate-200 rounded-md bg-white prose prose-sm max-w-none"
+            className="p-4 border border-slate-200 rounded-md bg-white prose prose-sm max-w-none text-slate-800 prose-headings:text-slate-900 prose-a:text-blue-600 prose-strong:text-slate-900 prose-em:text-slate-800"
             dangerouslySetInnerHTML={{ __html: processContentForPreview(value) }}
           />
         </div>

@@ -2,13 +2,29 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/lib/auth';
 import { createEvent, getAllEvents } from '@/app/lib/models/event';
+import { getRegistrationCountByEventId } from '@/app/lib/models/eventRegistration';
 
 // GET /api/events
 export async function GET(request: NextRequest) {
   try {
     const includeArchived = request.nextUrl.searchParams.get('includeArchived') === 'true';
     const events = await getAllEvents(includeArchived);
-    return NextResponse.json(events);
+    
+    // Add registration counts to events
+    const eventsWithCounts = await Promise.all(
+      events.map(async (event) => {
+        if (event._id) {
+          const registrationCount = await getRegistrationCountByEventId(event._id.toString());
+          return {
+            ...event,
+            registrationCount
+          };
+        }
+        return event;
+      })
+    );
+    
+    return NextResponse.json(eventsWithCounts);
   } catch (error) {
     console.error('Error fetching events:', error);
     return NextResponse.json(

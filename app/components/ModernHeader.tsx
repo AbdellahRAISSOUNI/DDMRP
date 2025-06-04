@@ -112,10 +112,10 @@ export default function ModernHeader() {
               </li>
               <li>
                 <Link 
-                  href="/intuitive-flow" 
+                  href="/intuiflow" 
                   className="px-4 py-2 rounded-md font-medium text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors text-sm"
                 >
-                  IntuitiveFlow
+                  IntuiFlow
                 </Link>
               </li>
               <li>
@@ -191,11 +191,11 @@ export default function ModernHeader() {
               Events
             </Link>
             <Link 
-              href="/intuitive-flow" 
+              href="/intuiflow" 
               className="block px-4 py-2 rounded-md text-base font-medium text-slate-800 hover:bg-blue-50 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              IntuitiveFlow
+              IntuiFlow
             </Link>
             <Link 
               href="/contact" 

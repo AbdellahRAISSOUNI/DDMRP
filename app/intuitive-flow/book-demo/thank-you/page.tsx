@@ -23,8 +23,8 @@ export default function ThankYouPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/intuitive-flow" className="text-blue-800 font-medium hover:text-blue-600 transition-colors">
-                    IntuitiveFlow
+                  <Link href="/intuiflow" className="text-blue-800 font-medium hover:text-blue-600 transition-colors">
+                    IntuiFlow
                   </Link>
                 </li>
                 <li>

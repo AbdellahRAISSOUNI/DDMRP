@@ -28,6 +28,11 @@ export async function getRegistrationsByEventId(eventId: string): Promise<EventR
   const collection = client.db().collection<EventRegistration>('eventRegistrations');
   
   try {
+    if (!ObjectId.isValid(eventId)) {
+      console.error('Invalid ObjectId format:', eventId);
+      return [];
+    }
+    
     return collection.find({ eventId: new ObjectId(eventId) }).sort({ createdAt: -1 }).toArray();
   } catch (error) {
     console.error('Error fetching registrations by event ID:', error);
@@ -128,5 +133,22 @@ export async function getEventRegistrationStatistics(eventId?: string) {
         cancelled: 0 
       }
     };
+  }
+}
+
+export async function getRegistrationCountByEventId(eventId: string): Promise<number> {
+  const client = await clientPromise;
+  const collection = client.db().collection<EventRegistration>('eventRegistrations');
+  
+  try {
+    if (!ObjectId.isValid(eventId)) {
+      console.error('Invalid ObjectId format:', eventId);
+      return 0;
+    }
+    
+    return collection.countDocuments({ eventId: new ObjectId(eventId) });
+  } catch (error) {
+    console.error('Error counting registrations by event ID:', error);
+    return 0;
   }
 } 

@@ -11,6 +11,26 @@ const nextConfig = {
       },
     ],
   },
+  // Add redirects for the old intuitive-flow paths to the new intuiflow paths
+  async redirects() {
+    return [
+      {
+        source: '/intuitive-flow',
+        destination: '/intuiflow',
+        permanent: true,
+      },
+      {
+        source: '/intuitive-flow/book-demo',
+        destination: '/intuiflow/book-demo',
+        permanent: true,
+      },
+      {
+        source: '/intuitive-flow/book-demo/thank-you',
+        destination: '/intuiflow/book-demo/thank-you',
+        permanent: true,
+      },
+    ];
+  },
   webpack: (config) => {
     // Handle Quill's SVG files
     config.module.rules.push({

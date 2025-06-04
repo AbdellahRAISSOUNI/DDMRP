@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import PageWrapper from '../components/PageWrapper';
 
-export default function IntuitiveFlowPage() {
+export default function IntuiFlowPage() {
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -70,26 +70,26 @@ export default function IntuitiveFlowPage() {
           <div className="absolute inset-0 w-full h-full">
             <Image
               src="/images/supply-chain.jpg"
-              alt="IntuitiveFlow DDMRP"
+              alt="IntuiFlow DDMRP"
               fill
               className="object-cover object-center"
               sizes="100vw"
               priority
               quality={90}
             />
-            <div className="absolute inset-0 bg-slate-900/80"></div>
+            <div className="absolute inset-0 bg-slate-900/90"></div>
             
-            {/* Abstract shapes with parallax effect */}
+            {/* Abstract shapes with parallax effect - moved to avoid interfering with logo */}
             <div 
-              className="absolute -top-24 -right-24 w-96 h-96 bg-green-500 rounded-full opacity-20 blur-3xl will-change-transform" 
+              className="absolute -top-48 -right-48 w-96 h-96 bg-green-500 rounded-full opacity-10 blur-3xl will-change-transform" 
               style={{ transform: `translateY(${scrollY * 0.05}px)` }}
             ></div>
             <div 
-              className="absolute bottom-1/4 -left-24 w-64 h-64 bg-orange-500 rounded-full opacity-20 blur-3xl will-change-transform" 
+              className="absolute bottom-1/4 -left-48 w-64 h-64 bg-orange-500 rounded-full opacity-10 blur-3xl will-change-transform" 
               style={{ transform: `translateY(${scrollY * -0.03}px)` }}
             ></div>
             <div 
-              className="absolute top-1/3 right-1/3 w-80 h-80 bg-blue-500 rounded-full opacity-20 blur-3xl will-change-transform" 
+              className="absolute top-1/3 right-2/3 w-80 h-80 bg-blue-500 rounded-full opacity-10 blur-3xl will-change-transform" 
               style={{ transform: `translateY(${scrollY * 0.04}px)` }}
             ></div>
           </div>
@@ -101,12 +101,12 @@ export default function IntuitiveFlowPage() {
               variants={staggerContainer}
               className="text-center max-w-3xl mx-auto"
             >
-              <motion.div variants={fadeIn} className="mb-4">
+              <motion.div variants={fadeIn} className="mb-6">
                 <Link 
                   href="/" 
-                  className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium"
+                  className="inline-flex items-center text-blue-300 hover:text-blue-200 font-medium px-4 py-2 rounded-full bg-blue-900/30 backdrop-blur-sm transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
                   Back to Home
@@ -115,21 +115,24 @@ export default function IntuitiveFlowPage() {
               
               <motion.h1 
                 variants={fadeIn}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight"
               >
-                <div className="flex justify-center mb-4">
-                  <Image
-                    src="/intuiflow-color-2.svg"
-                    alt="IntuiFlow"
-                    width={274}
-                    height={54}
-                    className="h-auto"
-                    priority
-                  />
+                <div className="flex justify-center mb-6">
+                  <div className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-xl">
+                    <Image
+                      src="/intuiflow-color-2.svg"
+                      alt="IntuiFlow"
+                      width={320}
+                      height={80}
+                      className="h-auto"
+                      priority
+                    />
+                    <div className="mt-2 text-xs text-slate-600 uppercase tracking-wider font-medium">By Demand Driven Technologies</div>
+                  </div>
                 </div>
               </motion.h1>
               
-              <motion.div variants={fadeIn} className="flex items-center justify-center gap-2 mb-6">
+              <motion.div variants={fadeIn} className="flex items-center justify-center gap-3 mb-8">
                 {['bg-green-500', 'bg-orange-400', 'bg-blue-500'].map((color, index) => (
                   <motion.div 
                     key={index}
@@ -140,24 +143,33 @@ export default function IntuitiveFlowPage() {
                       delay: 0.3 + (index * 0.2),
                       ease: [0.16, 1, 0.3, 1]
                     }}
-                    className={`h-1.5 rounded-full ${color}`}
+                    className={`h-2 rounded-full ${color}`}
                   ></motion.div>
                 ))}
               </motion.div>
               
               <motion.p 
                 variants={fadeIn}
-                className="text-xl text-white/90 max-w-2xl mx-auto mb-8"
+                className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-10 leading-relaxed"
               >
                 Revolutionize your supply chain management with our innovative approach to demand-driven material requirements planning
               </motion.p>
 
-              <motion.div variants={fadeIn}>
+              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link 
                   href="/intuiflow/book-demo" 
-                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                  className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hover:from-blue-600 hover:to-blue-700"
                 >
                   Book a Demo
+                </Link>
+                <Link 
+                  href="#features" 
+                  className="inline-flex items-center justify-center bg-white/10 backdrop-blur-sm text-white font-semibold py-4 px-10 rounded-xl border border-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-105"
+                >
+                  Learn More
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
                 </Link>
               </motion.div>
             </motion.div>
@@ -177,6 +189,7 @@ export default function IntuitiveFlowPage() {
 
         {/* Features Section */}
         <motion.section 
+          id="features"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -250,189 +263,61 @@ export default function IntuitiveFlowPage() {
           </div>
         </motion.section>
 
-        {/* How It Works Section */}
+        {/* Call to Action */}
         <motion.section 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="py-16 md:py-24 bg-slate-50"
+          className="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-indigo-700"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div variants={fadeIn} className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">How IntuitiveFlow Works</h2>
-              <div className="flex items-center justify-center gap-2 mb-6">
-                {['bg-green-500', 'bg-orange-400', 'bg-blue-500'].map((color, index) => (
-                  <div 
-                    key={index}
-                    className={`h-1 w-10 ${color} rounded-full`}
-                  ></div>
-                ))}
-              </div>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Our simple yet powerful approach to improving your supply chain
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  step: 1,
-                  title: "Analyze",
-                  description: "We analyze your current supply chain processes and identify areas for improvement.",
-                  color: "green"
-                },
-                {
-                  step: 2,
-                  title: "Design",
-                  description: "We design a customized solution tailored to your specific business needs.",
-                  color: "orange"
-                },
-                {
-                  step: 3,
-                  title: "Implement",
-                  description: "Our team works with you to implement the solution with minimal disruption.",
-                  color: "blue"
-                },
-                {
-                  step: 4,
-                  title: "Optimize",
-                  description: "We continuously monitor and optimize your system for maximum efficiency.",
-                  color: "green"
-                }
-              ].map((item, index) => (
-                <motion.div 
-                  key={index}
-                  variants={fadeIn}
-                  className="bg-white rounded-xl shadow-md border border-slate-100 p-6 md:p-8 relative overflow-hidden"
-                >
-                  <div className={`absolute top-0 left-0 w-1 h-full bg-${item.color === "green" ? "green-500" : item.color === "orange" ? "orange-400" : "blue-500"}`}></div>
-                  <div className={`absolute top-6 right-6 h-10 w-10 bg-${item.color === "green" ? "green-500" : item.color === "orange" ? "orange-400" : "blue-500"} rounded-full text-white flex items-center justify-center font-bold text-lg`}>
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-800 mb-3">{item.title}</h3>
-                  <p className="text-slate-600">
-                    {item.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div variants={fadeIn} className="text-center mt-12">
-              <Link 
-                href="/intuiflow/book-demo" 
-                className="inline-block bg-blue-600 text-white font-medium py-3 px-8 rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                Book a Demo Today
-              </Link>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Testimonials Section */}
-        <motion.section 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="py-16 md:py-24"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div variants={fadeIn} className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">What Our Clients Say</h2>
-              <div className="flex items-center justify-center gap-2 mb-6">
-                {['bg-green-500', 'bg-orange-400', 'bg-blue-500'].map((color, index) => (
-                  <div 
-                    key={index}
-                    className={`h-1 w-10 ${color} rounded-full`}
-                  ></div>
-                ))}
-              </div>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Hear from businesses that have transformed with IntuitiveFlow
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Testimonial 1 */}
+            <div className="flex flex-col md:flex-row items-center justify-between">
               <motion.div 
                 variants={fadeInLeft}
-                className="bg-white rounded-xl shadow-lg border border-slate-100 p-8 relative"
+                className="md:w-1/2 mb-8 md:mb-0"
               >
-                <div className="absolute -top-4 -left-4 text-6xl text-green-200 opacity-50 font-serif">"</div>
-                <div className="flex items-center mb-6">
-                  <div className="h-14 w-14 bg-green-100 rounded-full flex items-center justify-center text-green-700 font-bold mr-4 text-xl">
-                    AB
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-800 text-lg">Alex Brown</h4>
-                    <p className="text-sm text-slate-500">Supply Chain Director, TechCorp</p>
-                  </div>
-                </div>
-                <p className="text-slate-600 italic text-lg">
-                  "IntuitiveFlow has completely transformed our supply chain operations. We've reduced inventory costs by 23% while improving service levels."
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to transform your supply chain?</h2>
+                <p className="text-xl text-blue-100 mb-6">
+                  Book a personalized demo today and see how IntuiFlow can revolutionize your business.
                 </p>
+                <Link 
+                  href="/intuiflow/book-demo" 
+                  className="inline-block bg-white text-blue-600 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  Get Started
+                </Link>
               </motion.div>
-
-              {/* Testimonial 2 */}
-              <motion.div 
+              
+              <motion.div
                 variants={fadeInRight}
-                className="bg-white rounded-xl shadow-lg border border-slate-100 p-8 relative"
+                className="md:w-1/2 relative"
               >
-                <div className="absolute -top-4 -left-4 text-6xl text-orange-200 opacity-50 font-serif">"</div>
-                <div className="flex items-center mb-6">
-                  <div className="h-14 w-14 bg-orange-100 rounded-full flex items-center justify-center text-orange-700 font-bold mr-4 text-xl">
-                    SJ
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-blue-400/30 shadow-xl">
+                  <div className="flex items-center mb-4">
+                    <div className="h-12 w-12 bg-blue-500 rounded-xl flex items-center justify-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-white">Easy Implementation</h3>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-800 text-lg">Sarah Johnson</h4>
-                    <p className="text-sm text-slate-500">Operations Manager, GlobalManufacturing</p>
+                  <p className="text-blue-100 mb-6">Our team will guide you through every step of the implementation process.</p>
+                  
+                  <div className="flex items-center mb-4">
+                    <div className="h-12 w-12 bg-blue-500 rounded-xl flex items-center justify-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-white">Cost Effective</h3>
                   </div>
+                  <p className="text-blue-100">Maximize your ROI with our flexible pricing options tailored to your needs.</p>
                 </div>
-                <p className="text-slate-600 italic text-lg">
-                  "The insights we've gained from IntuitiveFlow have been invaluable. Our team is now able to make proactive decisions rather than reactive ones."
-                </p>
               </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* CTA Section */}
-        <motion.section 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeIn}
-          className="py-16 md:py-24 bg-slate-50"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 rounded-2xl shadow-xl overflow-hidden">
-              <div className="px-6 py-12 md:p-12 text-center md:text-left flex flex-col md:flex-row items-center justify-between">
-                <div className="md:max-w-2xl mb-8 md:mb-0">
-                  <div className="flex items-center mb-6">
-                    {['bg-green-300', 'bg-orange-300', 'bg-white'].map((color, index) => (
-                      <div 
-                        key={index}
-                        className={`h-1.5 w-12 ${color} rounded-full mr-2`}
-                      ></div>
-                    ))}
-                  </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to transform your supply chain?</h2>
-                  <p className="text-blue-50 text-lg max-w-2xl">
-                    Book a personalized demo today and see how IntuitiveFlow can work for your business.
-                  </p>
-                </div>
-                <div>
-                  <Link 
-                    href="/intuiflow/book-demo"
-                    className="inline-block bg-white hover:bg-blue-50 text-blue-600 font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
-                  >
-                    Schedule Your Demo
-                  </Link>
-                </div>
-              </div>
             </div>
           </div>
         </motion.section>
       </div>
     </PageWrapper>
   );
-}
+} 
