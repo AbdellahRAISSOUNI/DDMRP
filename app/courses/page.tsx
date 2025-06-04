@@ -197,7 +197,7 @@ export default function CoursesPage() {
 
         {/* Main Content */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 -mt-6 relative z-20">
-          {loading ? (
+        {loading ? (
             <div className="flex justify-center items-center py-16">
               <div className="animate-spin rounded-full h-16 w-16 border-4 border-green-600 border-t-transparent"></div>
           </div>
@@ -221,7 +221,7 @@ export default function CoursesPage() {
               <h3 className="text-2xl font-bold text-slate-800 mb-3">No courses available</h3>
               <p className="text-slate-600 max-w-md mx-auto mb-8">
                 There are no courses available at the moment. Please check back later or contact us for more information.
-              </p>
+            </p>
               <Link 
                 href="/contact" 
                 className="inline-block bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
@@ -283,7 +283,7 @@ export default function CoursesPage() {
               <div className="overflow-x-auto">
                       <table className="min-w-full">
                         <thead>
-                          <tr>
+                    <tr>
                             <th className="px-6 py-5 text-left font-semibold uppercase tracking-wider w-1/3 bg-gradient-to-r from-green-600 to-green-700 text-white">Date</th>
                             <th className="px-6 py-5 text-left font-semibold uppercase tracking-wider w-1/3 bg-gradient-to-r from-green-600 to-green-700 text-white">Program</th>
                             <th className="px-6 py-5 text-left font-semibold uppercase tracking-wider w-1/3 bg-gradient-to-r from-green-600 to-green-700 text-white">Instructor</th>
@@ -349,8 +349,8 @@ export default function CoursesPage() {
                       Explore our comprehensive range of DDMRP certification courses designed to enhance your 
                       supply chain expertise and advance your career.
                     </p>
-                  </div>
-                  
+            </div>
+
                   {categories.length > 0 && (
                     <div className="mt-8 md:mt-0">
                       <div className="flex flex-wrap gap-2">
@@ -380,7 +380,7 @@ export default function CoursesPage() {
                       </div>
                     </div>
                   )}
-                </div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {filteredCourses.map((course, index) => (
@@ -448,7 +448,7 @@ export default function CoursesPage() {
                       />
                     ) : (
                           <p className="text-slate-500 mb-6 italic text-sm flex-grow">No description available</p>
-                        )}
+                    )}
                         
                         {/* Course details */}
                         <div className="mt-auto">

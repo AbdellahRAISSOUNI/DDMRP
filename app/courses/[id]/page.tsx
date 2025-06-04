@@ -233,8 +233,8 @@ function CourseContent() {
                               sizes="(max-width: 768px) 100vw, 50vw"
                     onError={(e) => {
                                 (e.target as HTMLImageElement).src = 'https://via.placeholder.com/600x400?text=Course+Image';
-                              }}
-                            />
+                    }}
+                  />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
                               <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -343,7 +343,7 @@ function CourseContent() {
                             About This Course
                           </h2>
                           
-                          <div 
+                <div 
                             className="prose prose-green max-w-none text-slate-600"
                   dangerouslySetInnerHTML={{ __html: course.description }}
                 />
