@@ -177,13 +177,15 @@ export default function AboutPage() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
               </div>
               <motion.div 
                 variants={numberAnimation}
-                className="absolute inset-0 flex items-center justify-center"
+                className="absolute bottom-6 right-6 z-10"
               >
-                <div className="text-white text-9xl font-bold drop-shadow-lg">1</div>
+                <div className="flex items-center justify-center w-16 h-16 md:w-24 md:h-24 bg-green-600 rounded-full shadow-lg">
+                  <div className="text-white text-4xl md:text-5xl font-bold">1</div>
+                </div>
               </motion.div>
             </motion.div>
 
@@ -285,19 +287,21 @@ export default function AboutPage() {
             >
               <div className="aspect-[4/3] relative">
                 <Image 
-                  src="/images/about/new/values.jpg" 
-                  alt="DDMRP Consultants Working" 
+                  src="/images/about/new/values-team.jpg" 
+                  alt="DDMRP Team Collaboration" 
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
               </div>
               <motion.div 
                 variants={numberAnimation}
-                className="absolute inset-0 flex items-center justify-center"
+                className="absolute bottom-6 right-6 z-10"
               >
-                <div className="text-white text-9xl font-bold drop-shadow-lg">2</div>
+                <div className="flex items-center justify-center w-16 h-16 md:w-24 md:h-24 bg-orange-500 rounded-full shadow-lg">
+                  <div className="text-white text-4xl md:text-5xl font-bold">2</div>
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -321,19 +325,21 @@ export default function AboutPage() {
             >
               <div className="aspect-[4/3] relative">
                 <Image 
-                  src="/images/about/education.jpg" 
+                  src="/images/courses/course-detail-hero.jpg" 
                   alt="Education and Training" 
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
               </div>
               <motion.div 
                 variants={numberAnimation}
-                className="absolute inset-0 flex items-center justify-center"
+                className="absolute bottom-6 right-6 z-10"
               >
-                <div className="text-white text-9xl font-bold drop-shadow-lg">3</div>
+                <div className="flex items-center justify-center w-16 h-16 md:w-24 md:h-24 bg-red-600 rounded-full shadow-lg">
+                  <div className="text-white text-4xl md:text-5xl font-bold">3</div>
+                </div>
               </motion.div>
             </motion.div>
 
@@ -419,6 +425,37 @@ export default function AboutPage() {
             >
               We provide comprehensive solutions to optimize your supply chain operations
             </motion.p>
+          </motion.div>
+
+          {/* Services Image Section */}
+          <motion.div
+            variants={imageReveal}
+            className="mb-16 relative rounded-xl overflow-hidden shadow-xl"
+          >
+            <div className="aspect-[21/9] relative">
+              <Image 
+                src="/images/courses/course-detail-bg.jpg" 
+                alt="DDMRP Services" 
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-white text-center max-w-2xl px-4">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4">Comprehensive DDMRP Solutions</h3>
+                  <p className="text-white/90 text-lg">From implementation to optimization, we provide end-to-end support for your supply chain needs</p>
+                </div>
+              </div>
+            </div>
+            <motion.div 
+              variants={numberAnimation}
+              className="absolute bottom-6 right-6 z-10"
+            >
+              <div className="flex items-center justify-center w-16 h-16 md:w-24 md:h-24 bg-gradient-to-r from-green-600 to-blue-600 rounded-full shadow-lg">
+                <div className="text-white text-4xl md:text-5xl font-bold">4</div>
+              </div>
+            </motion.div>
           </motion.div>
 
           <motion.div 
@@ -512,14 +549,26 @@ export default function AboutPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="py-16 md:py-24 bg-slate-50"
+        className="py-16 md:py-24 bg-slate-50 relative"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-green-600 via-green-500 to-green-600 rounded-2xl shadow-xl overflow-hidden">
-            <div className="px-6 py-12 md:p-12 text-center md:text-left flex flex-col md:flex-row items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="rounded-2xl shadow-xl overflow-hidden relative">
+            <div className="absolute inset-0">
+              <Image 
+                src="/images/hero/supply-chain-dashboard.jpg" 
+                alt="Supply Chain Management" 
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority={false}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-blue-900/80"></div>
+            </div>
+
+            <div className="px-6 py-12 md:p-12 text-center md:text-left flex flex-col md:flex-row items-center justify-between relative z-10">
               <div className="md:max-w-2xl mb-8 md:mb-0">
                 <h2 className="text-3xl font-bold text-white mb-4">Ready to transform your supply chain?</h2>
-                <p className="text-green-50 text-lg">
+                <p className="text-white/90 text-lg">
                   Contact us today to discuss how our DDMRP expertise can help your organization achieve operational excellence.
                 </p>
               </div>

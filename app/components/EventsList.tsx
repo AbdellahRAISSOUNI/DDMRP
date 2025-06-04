@@ -116,8 +116,8 @@ export default function EventsList({ limit = 3 }: { limit?: number }) {
   // Define event types with their corresponding colors
   const eventTypes = [
     { name: 'Workshop', color: 'green' },
-    { name: 'Webinar', color: 'orange' },
-    { name: 'Conference', color: 'red' }
+    { name: 'Webinar', color: 'blue' },
+    { name: 'Conference', color: 'purple' }
   ];
 
   return (
@@ -141,23 +141,23 @@ export default function EventsList({ limit = 3 }: { limit?: number }) {
           gradient: 'from-green-600 to-green-500'
         };
         
-        if (eventType.color === 'orange') {
+        if (eventType.color === 'blue') {
           colorClasses = {
-            bg: 'bg-orange-500',
-            bgLight: 'bg-orange-100',
-            text: 'text-orange-500',
-            hover: 'group-hover:text-orange-500',
-            border: 'group-hover:border-orange-200',
-            gradient: 'from-orange-500 to-orange-400'
+            bg: 'bg-blue-600',
+            bgLight: 'bg-blue-100',
+            text: 'text-blue-600',
+            hover: 'group-hover:text-blue-600',
+            border: 'group-hover:border-blue-200',
+            gradient: 'from-blue-600 to-blue-500'
           };
-        } else if (eventType.color === 'red') {
+        } else if (eventType.color === 'purple') {
           colorClasses = {
-            bg: 'bg-red-600',
-            bgLight: 'bg-red-100',
-            text: 'text-red-600',
-            hover: 'group-hover:text-red-600',
-            border: 'group-hover:border-red-200',
-            gradient: 'from-red-600 to-red-500'
+            bg: 'bg-purple-600',
+            bgLight: 'bg-purple-100',
+            text: 'text-purple-600',
+            hover: 'group-hover:text-purple-600',
+            border: 'group-hover:border-purple-200',
+            gradient: 'from-purple-600 to-purple-500'
           };
         }
         
@@ -240,10 +240,22 @@ export default function EventsList({ limit = 3 }: { limit?: number }) {
                     View Details
                   </div>
                   
+                  {/* Registration count if available */}
+                  {event.registrationCount !== undefined && (
+                    <div className="flex items-center text-xs text-slate-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                      <span>{event.registrationCount} {event.registrationCount === 1 ? 'Registration' : 'Registrations'}</span>
+                    </div>
+                  )}
+                  
                   {/* Event date indicator */}
-                  <div className="text-xs text-slate-500">
-                    {formatDate(event.eventDate)}
-                  </div>
+                  {!event.registrationCount && (
+                    <div className="text-xs text-slate-500">
+                      {formatDate(event.eventDate)}
+                    </div>
+                  )}
                 </div>
               </div>
             </Link>
