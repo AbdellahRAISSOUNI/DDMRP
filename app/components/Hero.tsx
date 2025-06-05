@@ -60,10 +60,11 @@ export default function Hero() {
   return (
     <section 
       ref={heroRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative flex items-center overflow-hidden"
       style={{ 
-        paddingTop: `${headerHeight}px`,
-        height: `calc(100vh)`
+        paddingTop: `${headerHeight + 16}px`,
+        minHeight: `calc(100vh)`,
+        paddingBottom: '2rem'
       }}
     >
       {/* Parallax background layers */}
@@ -112,7 +113,7 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left content with text */}
           <div 
-            className={`transform transition-all duration-1000 ease-out ${
+            className={`transform transition-all duration-1000 ease-out mt-4 sm:mt-0 ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'
             }`}
           >

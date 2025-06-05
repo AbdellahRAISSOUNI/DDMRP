@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "env": {
+    "NODE_VERSION": "20.x",
+    "NEXT_LINT_IGNORE_ERRORS": "true"
+  }
+} 

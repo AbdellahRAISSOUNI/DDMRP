@@ -23,7 +23,7 @@ export default function Home() {
         <div id="events">
           <UpcomingEvents />
         </div>
-        <div id="intuitive-flow">
+        <div id="intuiflow">
           <IntuitiveFlowDemo />
         </div>
         <div id="testimonials">

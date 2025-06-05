@@ -76,7 +76,7 @@ export default function IntuitiveFlowDemo() {
 
   return (
     <section 
-      id="intuitive-flow" 
+      id="intuiflow" 
       ref={sectionRef}
       className="py-24 relative overflow-hidden"
     >
@@ -131,7 +131,7 @@ export default function IntuitiveFlowDemo() {
                   transitionDelay: '150ms'
                 }}
               >
-                Discover IntuitiveFlow
+                Discover IntuiFlow
               </h2>
             </div>
             
@@ -171,7 +171,7 @@ export default function IntuitiveFlowDemo() {
                 transitionDelay: '300ms'
               }}
             >
-              Experience our revolutionary tool that simplifies demand-driven planning and execution. IntuitiveFlow provides intuitive visualization and management of your supply chain.
+              Experience our revolutionary tool that simplifies demand-driven planning and execution. IntuiFlow provides intuitive visualization and management of your supply chain.
             </div>
             
             <div className="space-y-4">
@@ -247,7 +247,7 @@ export default function IntuitiveFlowDemo() {
                       <div className="w-3 h-3 rounded-full bg-orange-500"></div>
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
-                    <div className="text-sm text-slate-300">IntuitiveFlow Dashboard</div>
+                    <div className="text-sm text-slate-300">IntuiFlow Dashboard</div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-blue-500"></div>
                       <div className="w-2 h-2 rounded-full bg-blue-500"></div>
@@ -481,7 +481,7 @@ export default function IntuitiveFlowDemo() {
                 </div>
                 
                 <h3 className="text-2xl font-bold text-slate-800 mb-2">Ready to optimize your supply chain?</h3>
-                <p className="text-slate-600">Schedule a personalized demo of IntuitiveFlow and discover how our software can transform your demand-driven planning and execution.</p>
+                <p className="text-slate-600">Schedule a personalized demo of IntuiFlow and discover how our software can transform your demand-driven planning and execution.</p>
               </div>
               
               <div className="flex-shrink-0">
