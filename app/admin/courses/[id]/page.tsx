@@ -121,27 +121,27 @@ function CourseEditor({ id }: { id: string }) {
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-slate-800">Edit Course</h1>
+        <h1 className="text-2xl font-bold text-slate-800">Edit Formation</h1>
         <div className="flex space-x-3">
           <Link 
             href={`/courses/${id}`}
             className="text-blue-600 hover:text-blue-800 font-medium"
             target="_blank"
           >
-            View Course
+            View Formation
           </Link>
           <Link 
             href="/admin/courses" 
             className="text-slate-600 hover:text-slate-800 font-medium"
           >
-            Back to Courses
+            Back to Formations
           </Link>
         </div>
       </div>
       
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
         <div className="bg-blue-50 px-6 py-4 border-b border-blue-100">
-          <h2 className="text-lg font-medium text-blue-800">Course Details</h2>
+          <h2 className="text-lg font-medium text-blue-800">Formation Details</h2>
         </div>
         
         <div className="p-6">
@@ -154,7 +154,7 @@ function CourseEditor({ id }: { id: string }) {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="title" className="block text-sm font-medium text-slate-700 mb-1">
-                Course Title <span className="text-red-500">*</span>
+                Formation Title <span className="text-red-500">*</span>
               </label>
               <input
                 id="title"
@@ -162,7 +162,7 @@ function CourseEditor({ id }: { id: string }) {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-slate-800"
-                placeholder="Enter course title"
+                placeholder="Enter formation title"
                 required
               />
             </div>
@@ -210,7 +210,7 @@ function CourseEditor({ id }: { id: string }) {
                 rows={4}
               />
               <p className="mt-1 text-sm text-slate-500">
-                Enter dates for the course, one entry per line. Example:<br />
+                Enter dates for the formation, one entry per line. Example:<br />
                 14 et 15 Juin 2024<br />
                 13 et 14 Septembre 2024
               </p>
@@ -223,7 +223,7 @@ function CourseEditor({ id }: { id: string }) {
               <SimpleEditor
                 value={description}
                 onChange={setDescription}
-                placeholder="Enter course description"
+                placeholder="Enter formation description"
               />
             </div>
             

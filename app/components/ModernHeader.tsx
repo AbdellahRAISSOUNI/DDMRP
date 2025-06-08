@@ -99,7 +99,7 @@ export default function ModernHeader() {
                   href="/courses" 
                   className="px-4 py-2 rounded-md font-medium text-slate-700 hover:text-orange-500 hover:bg-orange-50 transition-colors text-sm"
                 >
-                  Courses
+                  Formations
                 </Link>
               </li>
               <li>
@@ -181,7 +181,7 @@ export default function ModernHeader() {
               className="block px-4 py-2 rounded-md text-base font-medium text-slate-800 hover:bg-orange-50 hover:text-orange-500 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Courses
+              Formations
             </Link>
             <Link 
               href="/events" 

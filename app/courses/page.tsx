@@ -137,7 +137,7 @@ export default function CoursesPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                Master <span className="text-green-400">DDMRP</span> with Our Expert-Led Courses
+                Master <span className="text-green-400">DDMRP</span> with Our Expert-Led Formations
               </h1>
               
               <div className="flex items-center justify-center gap-2 mb-8">
@@ -171,7 +171,7 @@ export default function CoursesPage() {
                   href="#courses-grid" 
                   className="inline-block bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
                 >
-                  Explore Courses
+                  Explore Formations
                 </a>
                 <Link 
                   href="/contact" 
@@ -338,7 +338,7 @@ export default function CoursesPage() {
                       Certification Programs
                     </span>
                     <h2 className="text-3xl font-bold text-slate-800 mt-2 mb-4">
-                      Available Courses
+                      Available Formations
                     </h2>
                     <div className="flex items-center gap-2 mb-4">
                       <div className="h-1 w-8 bg-green-600 rounded-full"></div>

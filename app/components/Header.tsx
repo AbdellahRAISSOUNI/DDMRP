@@ -120,7 +120,7 @@ export default function Header() {
                     activePath.startsWith('/courses') ? 'text-orange-500' : 'text-slate-800 hover:text-orange-500'
                   }`}
                 >
-                  Courses
+                  Formations
                 </Link>
               </li>
               <li>
@@ -213,7 +213,7 @@ export default function Header() {
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Courses
+              Formations
             </Link>
             <Link 
               href="/events" 

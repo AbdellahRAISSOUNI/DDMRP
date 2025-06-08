@@ -139,7 +139,7 @@ export default function CallToAction() {
                 onMouseLeave={() => setHoveredButton(null)}
               >
                 <span className="relative z-10 font-medium tracking-wide flex items-center">
-                  Explore Courses
+                  Explore Formations
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     className={`h-5 w-5 ml-2 transition-transform duration-300 ${hoveredButton === 'courses' ? 'translate-x-1' : ''}`} 

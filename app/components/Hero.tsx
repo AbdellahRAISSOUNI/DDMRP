@@ -182,7 +182,7 @@ export default function Hero() {
                 href="/courses" 
                 className="inline-block bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold py-3 px-8 rounded-lg transition-colors duration-300 text-center shadow-sm hover:shadow-md"
               >
-                Explore Courses
+                Explore Formations
               </Link>
             </div>
             

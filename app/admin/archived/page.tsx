@@ -94,7 +94,7 @@ function ArchivedCoursesContent() {
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-slate-800">Archived Courses</h1>
+        <h1 className="text-2xl font-bold text-slate-800">Archived Formations</h1>
         <Link 
           href="/admin/courses" 
           className="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium text-sm"
@@ -102,7 +102,7 @@ function ArchivedCoursesContent() {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
           </svg>
-          View Active Courses
+          View Active Formations
         </Link>
       </div>
       
@@ -124,9 +124,9 @@ function ArchivedCoursesContent() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-slate-800 mb-2">No archived courses</h3>
+            <h3 className="text-lg font-medium text-slate-800 mb-2">No archived formations</h3>
             <p className="text-slate-500 max-w-md mx-auto mb-6">
-              You don't have any archived courses. Archived courses will appear here.
+              You don't have any archived formations. Archived formations will appear here.
             </p>
             <Link 
               href="/admin/courses" 
@@ -135,7 +135,7 @@ function ArchivedCoursesContent() {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
               </svg>
-              View Active Courses
+              View Active Formations
             </Link>
           </div>
         ) : (

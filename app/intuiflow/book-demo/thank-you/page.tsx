@@ -264,13 +264,13 @@ export default function ThankYouPage() {
                     className="object-cover opacity-40"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <h3 className="text-xl font-bold text-white">DDMRP Courses</h3>
+                    <h3 className="text-xl font-bold text-white">DDMRP Formations</h3>
                   </div>
                 </div>
                 <div className="p-6">
                   <p className="text-slate-600 mb-4">Explore our comprehensive DDMRP courses designed for supply chain professionals.</p>
                   <Link href="/courses" className="text-green-600 hover:text-green-800 font-medium inline-flex items-center">
-                    View Courses
+                    View Formations
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -334,7 +334,7 @@ export default function ThankYouPage() {
                     href="/courses"
                     className="inline-block bg-white hover:bg-blue-50 text-blue-600 font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
                   >
-                    View Our Courses
+                    View Our Formations
                   </Link>
                 </div>
               </div>
