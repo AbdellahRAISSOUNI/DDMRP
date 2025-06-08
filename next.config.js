@@ -15,13 +15,18 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['via.placeholder.com'],
+    domains: ['via.placeholder.com', 'localhost'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
     ],
+    unoptimized: true, // Allow Next.js to serve images from API routes
   },
   // Add redirects for the old intuitive-flow paths to the new intuiflow paths
   async redirects() {

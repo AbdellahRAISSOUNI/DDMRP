@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 interface ImageUploadProps {
@@ -16,7 +16,13 @@ export default function ImageUpload({
 }: ImageUploadProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [imageKey, setImageKey] = useState<number>(Date.now());
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Update image key when value changes to force re-render
+  useEffect(() => {
+    setImageKey(Date.now());
+  }, [value]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -51,6 +57,7 @@ export default function ImageUpload({
 
       const data = await response.json();
       onChange(data.url);
+      console.log("Image uploaded successfully:", data.url);
     } catch (err: any) {
       console.error('Error uploading image:', err);
       setError(err.message || 'Failed to upload image');
@@ -61,6 +68,16 @@ export default function ImageUpload({
         fileInputRef.current.value = '';
       }
     }
+  };
+
+  // Function to check if the image URL is from MongoDB (starts with /api/images/)
+  const isMongoDBImage = (url: string): boolean => {
+    return url.startsWith('/api/images/');
+  };
+
+  const handleImageError = () => {
+    console.error("Image failed to load:", value);
+    setError("Image failed to load. Please try uploading again.");
   };
 
   return (
@@ -103,13 +120,13 @@ export default function ImageUpload({
         {value && (
           <div className="w-24 h-24 border border-slate-200 rounded-md overflow-hidden bg-slate-50 relative">
             <Image
+              key={imageKey}
               src={value}
               alt="Preview"
               fill
               className="object-cover"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150?text=Invalid+Image';
-              }}
+              onError={handleImageError}
+              unoptimized={value.startsWith('/api/images/')}
             />
           </div>
         )}

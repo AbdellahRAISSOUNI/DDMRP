@@ -1,5 +1,6 @@
 import { ObjectId } from 'mongodb';
 import clientPromise from '../mongodb';
+import { deleteImage } from './image';
 
 export interface Course {
   _id?: ObjectId;
@@ -63,6 +64,21 @@ export async function updateCourse(id: string, updates: Partial<Course>): Promis
   const collection = client.db().collection<Course>('courses');
   
   try {
+    // If imageUrl is being updated and the old one is a MongoDB image, delete it
+    if (updates.imageUrl !== undefined) {
+      const existingCourse = await getCourseById(id);
+      if (existingCourse && existingCourse.imageUrl && existingCourse.imageUrl.startsWith('/api/images/')) {
+        // Extract image ID from URL
+        const oldImageId = existingCourse.imageUrl.split('/').pop();
+        if (oldImageId && updates.imageUrl !== existingCourse.imageUrl) {
+          // Only delete if the image is being changed
+          await deleteImage(oldImageId).catch(err => 
+            console.error(`Failed to delete old image ${oldImageId}:`, err)
+          );
+        }
+      }
+    }
+
     const result = await collection.updateOne(
       { _id: new ObjectId(id) },
       { 
@@ -92,6 +108,19 @@ export async function deleteCourse(id: string): Promise<boolean> {
   const collection = client.db().collection<Course>('courses');
   
   try {
+    // Get the course to check if it has an image to delete
+    const course = await getCourseById(id);
+    if (course && course.imageUrl && course.imageUrl.startsWith('/api/images/')) {
+      // Extract image ID from URL
+      const imageId = course.imageUrl.split('/').pop();
+      if (imageId) {
+        // Delete the image from MongoDB
+        await deleteImage(imageId).catch(err => 
+          console.error(`Failed to delete image ${imageId} when deleting course:`, err)
+        );
+      }
+    }
+
     const result = await collection.deleteOne({ _id: new ObjectId(id) });
     return result.deletedCount > 0;
   } catch (error) {
