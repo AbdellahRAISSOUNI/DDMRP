@@ -64,8 +64,8 @@ function CourseCreator() {
         throw new Error(data.error || 'Failed to create course');
       }
       
-      const course = await response.json();
-      router.push(`/admin/courses/${course._id}`);
+      // Redirect to courses list instead of edit page to prevent double creation
+      router.push('/admin/courses');
     } catch (err: any) {
       console.error('Error creating course:', err);
       setError(err.message || 'Failed to create course. Please try again.');
