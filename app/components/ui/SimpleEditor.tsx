@@ -56,14 +56,13 @@ export default function SimpleEditor({
     { label: 'Paragraph', action: () => insertFormat('<p>', '</p>') },
   ];
   
-  // Process content for preview - convert newlines to <br> tags
+  // Process content for preview - convert newlines to proper paragraphs
   const processContentForPreview = (content: string) => {
     // First wrap content in <p> tags if it doesn't already have block elements
     if (!content.includes('<p>') && !content.includes('<h') && !content.includes('<ul>')) {
-      // Split by newlines and wrap each paragraph in <p> tags
+      // Split by newlines and wrap each line in <p> tags
       return content.split('\n')
-        .filter(line => line.trim() !== '')
-        .map(line => `<p>${line}</p>`)
+        .map(line => line.trim() !== '' ? `<p>${line}</p>` : '<p><br></p>')
         .join('');
     }
     return content;

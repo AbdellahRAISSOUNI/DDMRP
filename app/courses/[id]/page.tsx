@@ -345,7 +345,12 @@ function CourseContent() {
                           
                 <div 
                             className="prose prose-green max-w-none text-slate-600"
-                  dangerouslySetInnerHTML={{ __html: course.description }}
+                  dangerouslySetInnerHTML={{ __html: course.description
+                    ? course.description.includes('<p>') || course.description.includes('<h') || course.description.includes('<ul>') 
+                      ? course.description 
+                      : course.description.split('\n').map(line => line.trim() !== '' ? `<p>${line}</p>` : '<p><br></p>').join('')
+                    : ''
+                  }}
                 />
                         </motion.div>
                       )}
