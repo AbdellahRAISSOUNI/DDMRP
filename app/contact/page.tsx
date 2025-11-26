@@ -288,7 +288,7 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all text-slate-800 bg-white"
-                        placeholder="+1 (234) 567-8900"
+                        placeholder="+212 661 288654"
                       />
                     </div>
                     <div>
@@ -385,8 +385,8 @@ export default function ContactPage() {
                       <div>
                         <h3 className="text-lg font-medium text-slate-800 mb-2">Address</h3>
                         <p className="text-slate-600">
-                          123 Business Street, Suite 100<br />
-                          New York, NY 10001
+                          Casablanca<br />
+                          Morocco
                         </p>
                       </div>
                     </div>
@@ -400,8 +400,8 @@ export default function ContactPage() {
                       <div>
                         <h3 className="text-lg font-medium text-slate-800 mb-2">Email</h3>
                         <p className="text-slate-600">
-                          <a href="mailto:info@ddmrp.com" className="text-orange-500 hover:underline">
-                            info@ddmrp.com
+                          <a href="mailto:info@ddmrpmaroc.com" className="text-orange-500 hover:underline">
+                            info@ddmrpmaroc.com
                           </a>
                         </p>
                       </div>
@@ -416,8 +416,8 @@ export default function ContactPage() {
                       <div>
                         <h3 className="text-lg font-medium text-slate-800 mb-2">Phone</h3>
                         <p className="text-slate-600">
-                          <a href="tel:+12345678900" className="text-red-600 hover:underline">
-                            +1 (234) 567-8900
+                          <a href="tel:+212661288654" className="text-red-600 hover:underline">
+                            +212 661 288654
                           </a>
                         </p>
                       </div>

@@ -21,7 +21,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-slate-400 mb-6">
-              Leading provider of DDMRP consulting and training services, helping organizations optimize their supply chains.
+              DDMRP is the genius inventory planning and execution approach that maximizes ROI and improves On Time Delivery by focused and protecting the flow.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-slate-400 hover:text-white transition-colors">
@@ -81,24 +81,24 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span className="text-slate-400">
-                  123 Business Street, Suite 100<br />
-                  New York, NY 10001
+                  Casablanca<br />
+                  Morocco
                 </span>
               </li>
               <li className="flex items-start">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-400 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:info@ddmrp.com" className="text-slate-400 hover:text-white transition-colors">
-                  info@ddmrp.com
+                <a href="mailto:info@ddmrpmaroc.com" className="text-slate-400 hover:text-white transition-colors">
+                  info@ddmrpmaroc.com
                 </a>
               </li>
               <li className="flex items-start">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-400 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href="tel:+12345678900" className="text-slate-400 hover:text-white transition-colors">
-                  +1 (234) 567-8900
+                <a href="tel:+212661288654" className="text-slate-400 hover:text-white transition-colors">
+                  +212 661 288654
                 </a>
               </li>
             </ul>
