@@ -400,8 +400,8 @@ export default function ContactPage() {
                       <div>
                         <h3 className="text-lg font-medium text-slate-800 mb-2">Email</h3>
                         <p className="text-slate-600">
-                          <a href="mailto:info@ddmrpmaroc.com" className="text-orange-500 hover:underline">
-                            info@ddmrpmaroc.com
+                          <a href="mailto:Contact@ddmrp.ma" className="text-orange-500 hover:underline">
+                            Contact@ddmrp.ma
                           </a>
                         </p>
                       </div>
